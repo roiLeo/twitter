@@ -14,3 +14,7 @@
 !var/SymfonyRequirements.php
 /vendor/
 /web/bundles/
+/.idea/
+/.idea/modules.xml
+/.idea/twitter.iml
+/.idea/workspace.xml
