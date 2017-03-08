@@ -1,0 +1,23 @@
+{% extends "::base.html.twig" %}
+    {% block title 'Tweet' %}
+
+    {% block header %}
+        <h1>Derniers Tweets:</h1>
+    {% endblock %}
+
+{% block content %}
+    {% for tweet in tweets %}
+        <div class="panel panel-default">
+            <div class="panel-body">
+                {{ tweet.message }}
+            </div>
+        </div>
+        {% else %}
+        Aucun Tweet
+    {% endfor %}
+{% endblock %}
+
+{% block footer %}
+{{ parent() }}
+<a href="{{ path('app_tweet_list') }}">LIEN VERS LA PAGE TWEET</a>
+{% endblock %}
