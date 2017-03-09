@@ -2,21 +2,16 @@
     {% block title 'Tweet' %}
 
     {% block header %}
-        <h1>Derniers Tweets:</h1>
+        <h1>Detail Tweet:</h1>
     {% endblock %}
 
 {% block content %}
-    {% for tweet in tweets %}
-    <a href="{{ path('app_tweet_view',{'id' :tweet.id}) }}">
         <div class="panel panel-default">
+            <div class="panel-heading">Crée le {{ tweet.createdAt|date('d/m/Y') }}</div>
             <div class="panel-body">
                 {{ tweet.message }}
             </div>
         </div>
-    </a>
-        {% else %}
-        Aucun Tweet
-    {% endfor %}
 {% endblock %}
 
 {% block footer %}

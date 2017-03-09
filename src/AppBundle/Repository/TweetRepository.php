@@ -1,6 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
+use AppBundle\Entity\Tweet;
 
 /**
  * TweetRepository
@@ -12,7 +13,7 @@ class TweetRepository extends \Doctrine\ORM\EntityRepository
 {
     /**
      * @param int $maxResults
-     * 
+     *
      * @return Tweet[]
      */
     public function getLastTweets($maxResults = 10)
@@ -23,5 +24,20 @@ class TweetRepository extends \Doctrine\ORM\EntityRepository
                     ->setMaxResults($maxResults)
                     ->getQuery()
                     ->getResult();
+    }
+
+    /**
+     * @param $id
+     *
+     * @return Tweet[]
+     */
+    public function getTweet($id)
+    {
+        return $this->createQueryBuilder('i')
+                    ->select('i')
+                    ->andWhere('i.id = :id')
+                    ->setParameter('id', $id)
+                    ->getQuery()
+                    ->getOneOrNullResult();
     }
 }
