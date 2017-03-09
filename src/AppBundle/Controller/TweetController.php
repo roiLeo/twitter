@@ -38,6 +38,7 @@ class TweetController extends Controller
             $em -> persist($tweet);
             $em -> flush();
 
+            $this->addFlash('success','GG WP');
             return $this->redirectToRoute('app_tweet_view',['id' => $tweet->getId()]);
         }
         return $this->render(':tweet:new.html.twig', ['form' => $form->createView() ]);
