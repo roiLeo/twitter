@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+    {% block title 'Tweet' %}
+
+    {% block header %}
+        <h1>Derniers Tweets:</h1>
+    {% endblock %}
+
+{% block content %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}
+
+{% block footer %}
+{{ parent() }}
+<a href="{{ path('app_tweet_list') }}">LIEN VERS LA PAGE TWEET</a>
+{% endblock %}
