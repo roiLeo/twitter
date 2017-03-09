@@ -14,7 +14,6 @@ class TweetController extends Controller
      */
     public function listAction()
     {
-
         $tweets = $this->getDoctrine()->getRepository(Tweet::class)->getLastTweets(
             $this->getParameter('app.tweet.nb_last',10)
         );
@@ -23,10 +22,16 @@ class TweetController extends Controller
 
     /**
      * @Route("/tweet/{id}", name="app_tweet_view", methods={"GET"})
+     * @param int $id
+     *
      */
     public function viewAction($id)
     {
         $tweet = $this->getDoctrine()->getRepository(Tweet::class)->getTweet($id);
+        if (!$tweet instanceof Tweet){
+            throw $this->createNotFoundException(sprintf('Entity Tweet with identifier "%d" not found', $id));
+        }
+
         return $this->render(':tweet:view.html.twig',['tweet' => $tweet]);
     }
 }
