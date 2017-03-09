@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class TweetType extends AbstractType
 {
@@ -13,7 +14,9 @@ class TweetType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('message');
+        $builder->add('message', TextareaType::class, ['attr' => [
+            'placeholder' => 'Your tweet (max 160chars)',
+        ]]);
     }
     
     /**
