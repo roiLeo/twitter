@@ -9,3 +9,15 @@ services:
         arguments: ["@translator"]
         tags:
             - { name: twig.extension }
+
+    app.tweet_manager:
+        class: AppBundle\Manager\TweetManager
+        arguments:
+          - "@doctrine.orm.entity_manager"
+          - "%app.tweet.nb_last%"
+
+    app.email_messenger:
+        class: AppBundle\Messenger\EmailMessenger
+        arguments:
+          - "@mailer"
+
